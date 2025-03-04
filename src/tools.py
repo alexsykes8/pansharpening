@@ -29,7 +29,7 @@ def collect_geo_data(input_path):
 
     return geo_transform, projection
 
-def generate_hillshade(input_path, output_path):
+def generate_hillshade(input_path, output_path, azimuth=315, altitude=45):
     '''
     Generate a hillshade from a DEM.
 
@@ -42,7 +42,7 @@ def generate_hillshade(input_path, output_path):
     dem = gdal.Open(input_path)
 
     # Generate the hillshade
-    gdal.DEMProcessing(output_path, dem, "hillshade", zFactor=2, azimuth=315, altitude=45)
+    gdal.DEMProcessing(output_path, dem, "hillshade", zFactor=2, azimuth=azimuth, altitude=altitude)
     print("Hillshade processing complete.")
     return output_path
 
