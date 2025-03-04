@@ -19,6 +19,7 @@ Example (LIDAR, BGRNir, pansharpened image):
 
 # Tools
 You can use QGIS to visualise the tif images, however the program does also generate a jpg version. The colour images were 16-bit (ie. each pixel could have colour values 0-65535 instead of the typical 0-255) which, unlike QGIS, most photo editors don't seem to cope with. QGIS was also an easy way to check that the geodata was still accurate at the end of the program. 
+
 You'll need a few libraries installed, the most annoying of which is gdal. I'd recommend using conda to install it, there's documentation for using pip but there's a decent chance it'll fail. 
 
 # How?
