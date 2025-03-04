@@ -17,5 +17,5 @@ altitude = 45
 # The threshold for marking pixels as water from the NIR band. Increasing it will result in more areas being marked as water.
 water_threshold_factor = 0.035
 
-# The gamma factor for increasing the saturation of the image. Increasing it will result in a more intense image.
-gamma_factor = 2
+# The gamma factor for increasing the gamma of the image. Increasing it will result in a more intense image.
+gamma_factor = 1.8
