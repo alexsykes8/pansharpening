@@ -8,7 +8,7 @@ Lidar data (https://environment.data.gov.uk/survey)
 Satellite data (https://browser.dataspace.copernicus.eu/)
 
 # Why?
-LIDAR measures depth and therefore doesn't collect any colour data. However, it can also be to a high resolution (the example in this repo is 1mx1m). On the other hand, colour images might have lower resolution (the example in this repo is 10mx10m). By combining the two, you can end up with a 1mx1m image that preserves the colour data.
+LIDAR measures depth and therefore doesn't collect any colour data. However, it can also be collected at a high resolution (the example in this repo is 1mx1m). On the other hand, colour images might have lower resolution (the example in this repo is 10mx10m). By combining the two, you can end up with a 1mx1m image that preserves the colour data.
 
 Example (LIDAR, BGRNir, pansharpened image):
 <p align="center">
