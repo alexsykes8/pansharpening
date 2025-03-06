@@ -23,7 +23,23 @@ You can use QGIS to visualise the tif images, however the program does also gene
 You'll need a few libraries installed, the most annoying of which is gdal. I'd recommend using conda to install it, there's documentation for using pip but there's a decent chance it'll fail. 
 
 # How?
-WIP
+To start with, the program collects geodata from the tif. I found it was easier to do this and then reattach it after processing than keep reattaching it after every gdal, opencv or pillow function, which didn't always do that automatically.
+
+I used gdal to convert the lidar into hillshade. This takes the depth data, and a position for the sun, and uses it to generate realistic shadows for the items on the map.
+
+Then, this is converted from 8-bit to 16-bit. The BGRNir satellite image is 16-bit, meaning each colour value for BGR can be from 0-65535. I hadn't come across this before, so I didn't even think to check for it. It took me a long time to realise that if the hillshade and colour image are using different value scales, then the pansharpening won't work properly. 
+
+For similar reasons, the BGRNir satellite image needs to be scaled to the same dimensions as the higher resolution hillshade. There are a few different resampling methods, I used bilinear interpolation. It was the default for the gdal warp function and worked fine. 
+
+Then I apply the gdal pansharpen function. This combines the greyscale band of the lidar into each of the BGR bands of the colour image.
+
+This comes out with a usable image, but I applied some extra processing to improve the final image. 
+
+First, I dealt with issues of sudden changes in measured depths on bodies of water. I used the Nir band of the colour image for this, because water appears as the darkest values in infrared imagine. I created a map of these areas, and used this to even out the values of the water in my pansharpened image. 
+
+Then I increased the gamma of the image which just altered the contrast so that it appears with more realistic colours.
+
+Finally, I reattached the geodata.
 
 # Problems
 I'm done with this project, but there are a few issues with it that I'd be working on if I wanted to continue.
